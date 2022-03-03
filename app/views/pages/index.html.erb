@@ -1,0 +1,19 @@
+<div style="max-width: 968px; margin: 0 auto;">
+  <h1>Pages#index</h1>
+  <p>Find me in app/views/pages/index.html.erb</p>
+
+  <form action="<%= add_string_path %>"  method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"
+
+      <p>textarea</p>
+    <textarea name="text" rows="6" cols="20"></textarea>
+
+    <input type="submit" value="Submit">
+  </form>
+
+  <% $redis.lrange('data', 0, -1).each do |string| %>
+    <div>
+      <p><%= string %></p>
+    </div>
+  <% end %>
+</div>
